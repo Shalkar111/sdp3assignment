@@ -16,8 +16,8 @@ Verified locally on 2026-10-01: Maven test and package commands succeeded; 10 te
 - [x] Design rationale exists and is approximately two pages or less
 - [x] README exists
 - [x] Repository builds with mvn package
-- [ ] GitHub repository pushed
-- [ ] Repository link ready for Moodle
+- [x] GitHub repository pushed
+- [x] Repository link ready for Moodle
 - [ ] Oral defense cheat sheet reviewed
 
 ## Moodle
