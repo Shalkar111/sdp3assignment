@@ -22,4 +22,4 @@ Verified locally on 2026-10-01: Maven test and package commands succeeded; 10 te
 
 ## Moodle
 
-Based only on the assignment information available in this project and conversation, the explicitly required submission artifact is a Git repository link containing the full source, UML, design rationale, and tests. No ZIP upload is explicitly required.
+The assignment document asks for a Git repository link containing the full source, UML, design rationale, and tests. The Moodle submission form accepts files only (.zip, .rar, or .pdf), up to three files and 256 MB per file. Upload the prepared ZIP that contains the repository link and a copy of the project, then save the submission and verify that Moodle shows the uploaded file. The assignment document does not separately require a ZIP; it is used here because of Moodle's file-only form.
