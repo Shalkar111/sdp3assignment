@@ -1,0 +1,73 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface AudioEngine {
+    +play(filename: String, volume: int): void
+}
+
+class AudioException {
+    +AudioException(message: String)
+    +AudioException(message: String, cause: Throwable)
+}
+
+abstract class MusicPlayer {
+    #audioEngine: AudioEngine
+    #MusicPlayer(audioEngine: AudioEngine)
+    +play(filename: String): void
+}
+
+class BasicPlayer {
+    -DEFAULT_VOLUME: int = 50
+    +BasicPlayer(audioEngine: AudioEngine)
+    +play(filename: String): void
+}
+
+class PartyPlayer {
+    -PARTY_VOLUME: int = 90
+    +PartyPlayer(audioEngine: AudioEngine)
+    +play(filename: String): void
+}
+
+class LocalAudioEngine {
+    +play(filename: String, volume: int): void
+}
+
+class CloudAudioEngine {
+    +play(filename: String, volume: int): void
+}
+
+class LegacyAudioAdapter {
+    -legacyAudioSystem: LegacyAudioSystem
+    +LegacyAudioAdapter(legacyAudioSystem: LegacyAudioSystem)
+    +play(filename: String, volume: int): void
+}
+
+class LegacyAudioSystem {
+    -deviceBusy: boolean
+    +setDeviceBusy(deviceBusy: boolean): void
+    +startTrack(legacyVolume: int, filePath: String): int
+}
+
+class AudioEngineFactory {
+    {static} +create(engineType: String): AudioEngine
+}
+
+class Main {
+    {static} +main(args: String[]): void
+}
+
+MusicPlayer <|-- BasicPlayer
+MusicPlayer <|-- PartyPlayer
+MusicPlayer --> AudioEngine : delegates to
+AudioEngine <|.. LocalAudioEngine
+AudioEngine <|.. CloudAudioEngine
+AudioEngine <|.. LegacyAudioAdapter
+LegacyAudioAdapter --> LegacyAudioSystem : wraps
+Main ..> AudioEngineFactory : asks for engine
+Main ..> MusicPlayer : stores player
+AudioEngineFactory ..> AudioEngine : returns selected engine
+note right of AudioException
+  Common exception from AudioEngine.play
+  and MusicPlayer.play.
+end note
+@enduml

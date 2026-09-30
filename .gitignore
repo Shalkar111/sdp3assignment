@@ -1,0 +1,17 @@
+# Maven and Java
+/target/
+*.class
+
+# IntelliJ IDEA
+/.idea/
+*.iml
+/out/
+
+# Other IDEs
+.classpath
+.project
+.settings/
+bin/
+
+# macOS
+.DS_Store
